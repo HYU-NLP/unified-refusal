@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local environments
+.venv/
+venv/
+.env
+.env.*
+
+# Large/local experiment artifacts
+/data/*.jsonl
+/data/*.xlsx
+/data/*.xls
+/data/*.csv
+/data/*.tsv
+/outputs/
+/checkpoints/
+*.npz
+*.npy
+*.pt
+*.pth
+*.safetensors
+*.bin
+*.log
+
+# Editor/system
+.DS_Store
+.vscode/
+.idea/
