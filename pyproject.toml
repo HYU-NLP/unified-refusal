@@ -1,0 +1,6 @@
+[project]
+name = "unified-refusal"
+version = "0.1.0"
+description = "Analysis code for knowledge- and safety-based refusal representations in LLMs."
+requires-python = ">=3.10"
+readme = "README.md"
