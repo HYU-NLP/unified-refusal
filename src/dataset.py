@@ -24,7 +24,7 @@ def load_valid_pairs(path: str, max_pairs: Optional[int] = None) -> List[Refusal
                       includes k_control_prompt / s_control_prompt as normal answers
     """
     pairs = []
-    with open(path) as f:
+    with open(path, encoding="utf-8") as f:
         for line in f:
             line = line.strip()
             if not line:

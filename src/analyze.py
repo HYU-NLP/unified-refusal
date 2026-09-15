@@ -1,8 +1,9 @@
-"""RQ1 template-control similarity analysis.
+"""RQ1: template-control similarity analysis.
 
 This script compares KR/SR hidden-state similarity against the matched-control
-KC/SC similarity at each layer. It corresponds to the paper's check that the
-observed KR-SR relation is not simply a shared-template artifact.
+KC/SC similarity at each layer to test whether the observed KR-SR relation is
+simply a shared-template artifact. The other RQ1 geometry analyses and the
+peak-layer permutation diagnostic are implemented in ``decompose.py``.
 """
 
 import argparse
@@ -71,9 +72,9 @@ def run_model(model_name: str, n_bootstrap: int = N_BOOTSTRAP) -> None:
         print(f"  WARNING: {npz_path} not found; run extract_hidden_states.py first")
         return
 
-    data = np.load(npz_path, allow_pickle=True)
-    _require_controls(data, model_name)
-    result = run_relative_similarity(data, n_bootstrap=n_bootstrap)
+    with np.load(npz_path, allow_pickle=False) as data:
+        _require_controls(data, model_name)
+        result = run_relative_similarity(data, n_bootstrap=n_bootstrap)
     result["model"] = model_name
 
     ANALYSIS_DIR.mkdir(parents=True, exist_ok=True)

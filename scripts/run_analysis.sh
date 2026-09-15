@@ -21,10 +21,10 @@ run_for_model() {
   fi
 
   python "$ROOT/src/extract_hidden_states.py" --model "$model" "${max_arg[@]}"
-  python "$ROOT/src/analyze.py" --model "$model"
-  python "$ROOT/src/cross_probe.py" --model "$model"
-  python "$ROOT/src/decompose.py" --model "$model"
-  python "$ROOT/src/logit_lens.py" --model "$model"
+  python "$ROOT/src/analyze.py" --model "$model"       # RQ1: template-control similarity
+  python "$ROOT/src/cross_probe.py" --model "$model"   # RQ2: transfer + paired bootstrap
+  python "$ROOT/src/decompose.py" --model "$model"     # RQ1 geometry + RQ3 robustness
+  python "$ROOT/src/logit_lens.py" --model "$model"    # RQ3: vocabulary interpretation
 }
 
 if [[ "$TARGET" == "--all" ]]; then
